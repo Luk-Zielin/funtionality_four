@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Folder Data</title>
+</head>
+<body>
+<h2>View Folder Data</h2>
+
+<p><strong>Folder Name:</strong> <span th:text="${folder.name}"></span></p>
+<p><strong>Folders:</strong> <span th:text="${folder.childFolders}"></span></p>
+
+<a th:href="@{/folders}">Back to Menu</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>File Search</title>
+</head>
+<body>
+<h2>Search</h2>
+
+<form th:action="@{/files/delete}" th:method="delete">
+  <label for="searchName">Delete by Name:</label>
+  <input type="text" id="searchName" name="searchName">
+  <button type="submit">Delete</button>
+</form>
+
+<a th:href="@{/files}">Return</a>
+</body>
+</html>

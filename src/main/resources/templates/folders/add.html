@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Folder</title>
+</head>
+<body>
+<h2>Add New Folder</h2>
+
+<form th:action="@{/folders/add/new}" method="post">
+  <label for="foldername">Folder Name:</label>
+  <input type="text" id="foldername" name="foldername" required>
+
+  <label for="childfolders">Child Folders:</label>
+  <input type="text" id="childfolders" name="childfolders">
+
+  <button type="submit">Create</button>
+</form>
+
+<a th:href="@{/folders}">Back to Folder Menu</a>
+</body>
+</html>
+

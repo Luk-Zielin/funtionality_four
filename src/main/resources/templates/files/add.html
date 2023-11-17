@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New File</title>
+</head>
+<body>
+<h2>Add New File</h2>
+
+<form th:action="@{/files/add/new}" method="post">
+  <label for="filename">Filename:</label>
+  <input type="text" id="filename" name="filename" required>
+
+  <label for="size">Size (bytes):</label>
+  <input type="number" id="size" name="size" required>
+
+  <label for="folders">Folders:</label>
+  <input type="text" id="folders" name="folders">
+
+  <button type="submit">Create</button>
+</form>
+
+<a th:href="@{/files}">Back to File Menu</a>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View File Metadata</title>
+</head>
+<body>
+<h2>View File Metadata</h2>
+
+<p><strong>Filename:</strong> <span th:text="${file.filename}"></span></p>
+<p><strong>Size (bytes):</strong> <span th:text="${file.size}"></span></p>
+<p><strong>Folders:</strong> <span th:text="${file.folders}"></span></p>
+
+<a th:href="@{/files}">Back to Menu</a>
+</body>
+</html>
