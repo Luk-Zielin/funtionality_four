@@ -1,16 +1,18 @@
-package com.example.functionality_three.services;
+package com.example.functionality_four.services;
 
-import com.example.functionality_three.DTOs.FolderDTO;
-import com.example.functionality_three.entities.Folder;
-import com.example.functionality_three.repositories.FoldersJpaRepository;
-import com.example.functionality_three.repositories.MetadataJpaRepository;
+import com.example.functionality_four.DTOs.FolderDTO;
+import com.example.functionality_four.entities.Folder;
+import com.example.functionality_four.repositories.FoldersJpaRepository;
+import com.example.functionality_four.repositories.MetadataJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class FoldersService implements IFoldersService{
@@ -98,10 +100,17 @@ public class FoldersService implements IFoldersService{
     public String updateFolder(String folderName, FolderDTO updatedFolder, Model model) {
         return foldersRepository.findByName(folderName)
                 .map(existingFolder -> {
+
                     List<Folder> childFolders = new ArrayList<>();
                     for (String folder:
                             updatedFolder.getChildFolders()) {
                         foldersRepository.findByName(folder).ifPresent(childFolders::add);
+                    }
+                    for (Folder child:
+                         childFolders) {
+                        Set<Folder> visitedFolders = new HashSet<>();
+                        visitedFolders.add(existingFolder);
+                        if(checkIfFolderEditCausesCycle(child,visitedFolders)) return ("folders/edit");
                     }
                     existingFolder.setChildFolders(childFolders);
                     foldersRepository.save(existingFolder);
@@ -119,6 +128,12 @@ public class FoldersService implements IFoldersService{
                     for (String folder:
                             updatedFolder.getChildFolders()) {
                         foldersRepository.findByName(folder).ifPresent(childFolders::add);
+                    }
+                    for (Folder child:
+                            childFolders) {
+                        Set<Folder> visitedFolders = new HashSet<>();
+                        visitedFolders.add(existingFolder);
+                        if(checkIfFolderEditCausesCycle(child,visitedFolders)) return (ResponseEntity.badRequest().body(updatedFolder));
                     }
                     existingFolder.setChildFolders(childFolders);
                     foldersRepository.save(existingFolder);
@@ -148,5 +163,18 @@ public class FoldersService implements IFoldersService{
 
         Folder savedFolder = foldersRepository.save(folder);
         return readFolder(savedFolder.getName());
+    }
+
+    private boolean checkIfFolderEditCausesCycle(Folder folder, Set<Folder> visitedFolders){
+        if (!visitedFolders.add(folder)) {
+            return true;
+        }
+        for (Folder child : folder.getChildFolders()) {
+            if (checkIfFolderEditCausesCycle(child, visitedFolders)) {
+                return true;
+            }
+        }
+        visitedFolders.remove(folder);
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.functionality_three.entities;
+package com.example.functionality_four.entities;
 
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

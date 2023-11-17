@@ -1,7 +1,7 @@
-package com.example.functionality_three.DTOs;
+package com.example.functionality_four.DTOs;
 
-import com.example.functionality_three.entities.FileMetadata;
-import com.example.functionality_three.entities.Folder;
+import com.example.functionality_four.entities.FileMetadata;
+import com.example.functionality_four.entities.Folder;
 
 public class FileMetadataDTO {
     private String filename;

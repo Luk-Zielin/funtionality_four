@@ -1,4 +1,4 @@
-package com.example.functionality_three.entities;
+package com.example.functionality_four.entities;
 
 
 import jakarta.persistence.*;
@@ -76,4 +76,6 @@ public class Folder {
     public Long getId() {
         return id;
     }
+
+
 }

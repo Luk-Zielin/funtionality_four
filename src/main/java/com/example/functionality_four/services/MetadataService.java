@@ -1,10 +1,10 @@
-package com.example.functionality_three.services;
+package com.example.functionality_four.services;
 
-import com.example.functionality_three.DTOs.FileMetadataDTO;
-import com.example.functionality_three.entities.FileMetadata;
-import com.example.functionality_three.entities.Folder;
-import com.example.functionality_three.repositories.FoldersJpaRepository;
-import com.example.functionality_three.repositories.MetadataJpaRepository;
+import com.example.functionality_four.DTOs.FileMetadataDTO;
+import com.example.functionality_four.entities.FileMetadata;
+import com.example.functionality_four.entities.Folder;
+import com.example.functionality_four.repositories.FoldersJpaRepository;
+import com.example.functionality_four.repositories.MetadataJpaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,9 +1,9 @@
-package com.example.functionality_three.controllers;
+package com.example.functionality_four.controllers;
 
-import com.example.functionality_three.DTOs.FileMetadataDTO;
-import com.example.functionality_three.repositories.FoldersJpaRepository;
-import com.example.functionality_three.repositories.MetadataJpaRepository;
-import com.example.functionality_three.services.MetadataService;
+import com.example.functionality_four.DTOs.FileMetadataDTO;
+import com.example.functionality_four.repositories.FoldersJpaRepository;
+import com.example.functionality_four.repositories.MetadataJpaRepository;
+import com.example.functionality_four.services.MetadataService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
